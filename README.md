@@ -76,9 +76,13 @@ All task data is managed with Redux Toolkit.
 The app uses a single slice taskSlice.ts with reducers for:
 
 addTask
+
 toggleComplete
+
 editTask
+
 deleteTask
+
 filterTasks
 
 💾 Persistence
