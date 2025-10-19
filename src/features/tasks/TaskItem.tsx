@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { Task } from "../../types/Task";
 import { useDispatch } from "react-redux";
 import { toggleTask, deleteTask, editTask } from "./tasksSlice";
@@ -21,9 +21,11 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
   return (
     <motion.li
       layout
-      initial={{ opacity: 0, y: -6 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.98 }}
+      initial={{ opacity: 0, y: -6, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95, y: -6 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      whileHover={{ scale: 1.02 }}
       className={`task-item ${task.completed ? "completed" : ""}`}
     >
       <label className="task-left">
@@ -31,6 +33,7 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
           type="checkbox"
           checked={task.completed}
           onChange={() => dispatch(toggleTask(task.id))}
+          aria-label={`Mark task "${task.text}" as ${task.completed ? 'incomplete' : 'complete'}`}
         />
         {editing ? (
           <input
@@ -44,6 +47,7 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
                 setValue(task.text);
               }
             }}
+            onBlur={saveEdit}
             autoFocus
           />
         ) : (
@@ -84,4 +88,4 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
   );
 };
 
-export default TaskItem;
+export default memo(TaskItem);

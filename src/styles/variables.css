@@ -9,3 +9,18 @@
   --radius: 12px;
   --shadow: 0 6px 18px rgba(16,24,40,0.06);
 }
+
+/* Dark mode commented out for now
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --card: #2d2d2d;
+    --primary: #6b9bd2;
+    --accent: #4a2c5a;
+    --success: #2d5a2d;
+    --text: #ffffff;
+    --muted: #888888;
+    --shadow: 0 6px 18px rgba(0,0,0,0.3);
+  }
+} 
+*/

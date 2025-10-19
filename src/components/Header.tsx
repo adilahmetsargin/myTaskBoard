@@ -7,6 +7,8 @@ const Header: React.FC = () => {
   const remaining = useSelector(
     (s: RootState) => s.tasks.items.filter((t) => !t.completed).length
   );
+  const completed = total - remaining;
+  const progress = total > 0 ? (completed / total) * 100 : 0;
 
   return (
     <header className="header">
@@ -18,6 +20,17 @@ const Header: React.FC = () => {
           <span>{total} tasks</span>
         </div>
       </div>
+      {total > 0 && (
+        <div className="progress-container">
+          <div className="progress-bar">
+            <div 
+              className="progress-fill" 
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <span className="progress-text">{Math.round(progress)}% complete</span>
+        </div>
+      )}
     </header>
   );
 };

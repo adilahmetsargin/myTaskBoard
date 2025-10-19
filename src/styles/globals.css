@@ -50,6 +50,33 @@ body{
 }
 .meta .dot{color:var(--muted)}
 
+/* Progress bar */
+.progress-container{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.progress-bar{
+  flex:1;
+  height:6px;
+  background:rgba(167,199,231,0.2);
+  border-radius:3px;
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  background:var(--primary);
+  border-radius:3px;
+  transition:width 0.3s ease;
+}
+.progress-text{
+  font-size:12px;
+  color:var(--muted);
+  min-width:60px;
+  text-align:right;
+}
+
 /* Card */
 .card{
   background:var(--card);

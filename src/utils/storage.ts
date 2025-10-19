@@ -6,9 +6,16 @@ export const loadState = (): Partial<RootState> | undefined => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return undefined;
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    // Validate that the loaded state has the expected structure
+    if (parsed && typeof parsed === 'object' && parsed.tasks) {
+      return parsed;
+    }
+    return undefined;
   } catch (err) {
-    console.error("Failed to load state", err);
+    console.error("Failed to load state from localStorage:", err);
+    // Clear corrupted data
+    localStorage.removeItem(STORAGE_KEY);
     return undefined;
   }
 };

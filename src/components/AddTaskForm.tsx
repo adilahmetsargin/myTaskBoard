@@ -15,13 +15,21 @@ const AddTaskForm: React.FC = () => {
     setText("");
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <input
         className="add-input"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Add a new task..."
+        onKeyDown={handleKeyDown}
+        placeholder="Add a new task... (Press Enter to add)"
         aria-label="Add task"
       />
       <button className="add-btn" type="submit" aria-label="Add">
