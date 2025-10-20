@@ -2,7 +2,7 @@ import { RootState } from "../app/store";
 
 const STORAGE_KEY = "focusflow_v1";
 
-export const loadState = (): Partial<RootState> | undefined => {
+export const loadState = (): any => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return undefined;

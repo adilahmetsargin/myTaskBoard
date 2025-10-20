@@ -1,21 +1,42 @@
 import React, { useState, memo } from "react";
 import { Task } from "../../types/Task";
 import { useDispatch } from "react-redux";
-import { toggleTask, deleteTask, editTask } from "./tasksSlice";
+import { toggleTask, deleteTask, editTask, updateTask } from "./tasksSlice";
 import { AppDispatch } from "../../app/store";
-import { FiTrash2, FiEdit, FiCheck } from "react-icons/fi";
+import { FiTrash2, FiEdit, FiCheck, FiTag, FiFlag, FiCalendar } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
   const dispatch = useDispatch<AppDispatch>();
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(task.text);
+  const [editPriority, setEditPriority] = useState(task.priority || 'medium');
 
   const saveEdit = () => {
     const trimmed = value.trim();
     if (!trimmed) return;
     dispatch(editTask({ id: task.id, text: trimmed }));
+    if (editPriority !== task.priority) {
+      dispatch(updateTask({ id: task.id, updates: { priority: editPriority } }));
+    }
     setEditing(false);
+  };
+
+  const formatDate = (timestamp: number) => {
+    return new Date(timestamp).toLocaleDateString();
+  };
+
+  const isOverdue = (dueDate: number) => {
+    return dueDate < Date.now() && !task.completed;
+  };
+
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case 'high': return '#e74c3c';
+      case 'medium': return '#f39c12';
+      case 'low': return '#27ae60';
+      default: return '#95a5a6';
+    }
   };
 
   return (
@@ -36,22 +57,62 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
           aria-label={`Mark task "${task.text}" as ${task.completed ? 'incomplete' : 'complete'}`}
         />
         {editing ? (
-          <input
-            className="edit-input"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") saveEdit();
-              if (e.key === "Escape") {
-                setEditing(false);
-                setValue(task.text);
-              }
-            }}
-            onBlur={saveEdit}
-            autoFocus
-          />
+          <div className="edit-container">
+            <input
+              className="edit-input"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") saveEdit();
+                if (e.key === "Escape") {
+                  setEditing(false);
+                  setValue(task.text);
+                  setEditPriority(task.priority || 'medium');
+                }
+              }}
+              onBlur={saveEdit}
+              autoFocus
+            />
+            <div className="edit-priority">
+              <span className="edit-priority-label">Priority:</span>
+              <select
+                value={editPriority}
+                onChange={(e) => setEditPriority(e.target.value as 'low' | 'medium' | 'high')}
+                className="edit-priority-select"
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
         ) : (
-          <span className="task-text">{task.text}</span>
+          <div className="task-content">
+            <span className="task-text">{task.text}</span>
+            <div className="task-meta">
+              {task.category && (
+                <span className="task-category">
+                  <FiTag size={12} />
+                  {task.category}
+                </span>
+              )}
+              {task.priority && (
+                <span 
+                  className="task-priority"
+                  style={{ color: getPriorityColor(task.priority) }}
+                >
+                  <FiFlag size={12} />
+                  {task.priority}
+                </span>
+              )}
+              {task.dueDate && (
+                <span className={`task-due ${isOverdue(task.dueDate) ? 'overdue' : ''}`}>
+                  <FiCalendar size={12} />
+                  {formatDate(task.dueDate)}
+                </span>
+              )}
+            </div>
+          </div>
         )}
       </label>
 
