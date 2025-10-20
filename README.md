@@ -1,73 +1,121 @@
-# React + TypeScript + Vite
+🧩 myTaskBoard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Task Management Web App built with React, Vite, and TypeScript.
+This app lets users create, edit, and track tasks in a clean and minimal UI.
+Perfect for personal productivity or small team planning.
 
-Currently, two official plugins are available:
+🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React 18 + TypeScript
 
-## React Compiler
+Vite — fast development environment
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Redux Toolkit — global state management
 
-## Expanding the ESLint configuration
+React Router DOM — navigation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+CSS Modules — scoped and clean styling
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+UUID — unique task IDs
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🎨 Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+✅ Add new tasks
+✅ Edit and delete existing tasks
+✅ Mark tasks as completed
+✅ Filter tasks (All / Active / Completed)
+✅ Persistent data via localStorage
+✅ Fully responsive design (mobile-first)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🧱 Project Structure
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── TaskForm.tsx
+│   ├── TaskList.tsx
+│   └── TaskItem.tsx
+│
+├── redux/
+│   ├── store.ts
+│   └── taskSlice.ts
+│
+├── pages/
+│   ├── Home.tsx
+│   └── About.tsx
+│
+├── App.tsx
+├── main.tsx
+└── index.css
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+⚙️ Installation & Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Clone the repo:
+
+git clone https://github.com/adilahmetsargin/myTaskBoard.git
+cd myTaskBoard
+
+
+Install dependencies:
+
+npm install
+
+
+Start the project:
+
+npm run dev
+
+🧩 Components Overview
+Component	Description
+Header	Displays app title and navigation links
+TaskForm	Handles new task creation
+TaskList	Lists all tasks and filters them
+TaskItem	Single task component with checkbox and edit/delete actions
+🧠 State Management
+
+All task data is managed with Redux Toolkit.
+The app uses a single slice taskSlice.ts with reducers for:
+
+addTask
+
+toggleComplete
+
+editTask
+
+deleteTask
+
+filterTasks
+
+💾 Persistence
+
+Tasks are stored in localStorage, so refreshing the page won't lose data.
+
+🧰 Future Improvements (TODO)
+
+ Add dark mode 🌙
+ Add subtasks support
+ Add task due dates and reminders
+ Integrate with Firebase for cloud sync
+ Add drag-and-drop for task ordering
+ Add user login and profile
+ Deploy to Vercel or Netlify
+
+🌐 Live Demo
+
+(coming soon...)
+
+📸 Screenshots
+
+Add app screenshots here after UI setup.
+
+👨‍💻 Author
+
+Adil Ahmet Sargin
+Frontend Developer
+📍 Rochester Hills, MI
+📧 adilahmetsargin@gmail.com
+
+🔗 GitHub Profile
+
+🪄 License
+
+This project is open-source and available under the MIT License.
