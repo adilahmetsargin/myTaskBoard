@@ -4,11 +4,14 @@ import { loadState, saveState } from "../utils/storage";
 
 const persisted = loadState();
 
+const preloadedState =
+  persisted && persisted.tasks ? { tasks: persisted.tasks } : undefined;
+
 export const store = configureStore({
   reducer: {
     tasks: tasksReducer,
   },
-  preloadedState: persisted,
+  preloadedState,
 });
 
 store.subscribe(() => {
@@ -19,3 +22,10 @@ store.subscribe(() => {
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+
+
+
+
+
+
