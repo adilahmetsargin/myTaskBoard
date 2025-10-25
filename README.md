@@ -28,6 +28,7 @@ UUID — unique task IDs
 ✅ Fully responsive design (mobile-first)
 
 🧱 Project Structure
+
 src/
 ├── components/
 │   ├── Header.tsx
@@ -66,11 +67,13 @@ Start the project:
 npm run dev
 
 🧩 Components Overview
+
 Component	Description
 Header	Displays app title and navigation links
 TaskForm	Handles new task creation
 TaskList	Lists all tasks and filters them
 TaskItem	Single task component with checkbox and edit/delete actions
+
 🧠 State Management
 
 All task data is managed with Redux Toolkit.
