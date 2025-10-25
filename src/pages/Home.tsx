@@ -15,7 +15,7 @@ const Home: React.FC = () => {
           <TaskList />
         </main>
         <footer className="footer">
-          <small>Made with ♥ — focusFlow</small>
+          <small>sargindev — focusFlow</small>
         </footer>
       </div>
     </div>
