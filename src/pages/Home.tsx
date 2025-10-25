@@ -4,6 +4,7 @@ import AddTaskForm from "../components/AddTaskForm";
 import FilterBar from "../components/FilterBar";
 import TaskList from "../features/tasks/TaskList";
 
+
 const Home: React.FC = () => {
   return (
     <div className="page-root">
@@ -15,9 +16,12 @@ const Home: React.FC = () => {
           <TaskList />
         </main>
         <footer className="footer">
-          <small>sargindev — focusFlow</small>
+          <small>sargindev</small>
         </footer>
       </div>
+
+   
+
     </div>
   );
 };

@@ -6,4 +6,6 @@ export interface Task {
   category?: string;
   priority?: 'low' | 'medium' | 'high';
   dueDate?: number;
+  userId?: string;
 }
+
