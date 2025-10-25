@@ -52,6 +52,7 @@ src/
 Clone the repo:
 
 git clone https://github.com/adilahmetsargin/myTaskBoard.git
+
 cd myTaskBoard
 
 
@@ -87,31 +88,27 @@ filterTasks
 
 💾 Persistence
 
-Tasks are stored in localStorage, so refreshing the page won't lose data.
+Tasks are stored in firebase, so refreshing the page won't lose data.
 
 🧰 Future Improvements (TODO)
 
  Add dark mode 🌙
  Add subtasks support
  Add task due dates and reminders
- Integrate with Firebase for cloud sync
  Add drag-and-drop for task ordering
- Add user login and profile
- Deploy to Vercel or Netlify
 
 🌐 Live Demo
 
-(coming soon...)
-
-📸 Screenshots
-
-Add app screenshots here after UI setup.
+https://aasmytaskboard.netlify.app/
 
 👨‍💻 Author
 
 Adil Ahmet Sargin
+
 Frontend Developer
+
 📍 Rochester Hills, MI
+
 📧 adilahmetsargin@gmail.com
 
 🔗 GitHub Profile
