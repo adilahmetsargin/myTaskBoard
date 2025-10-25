@@ -30,22 +30,39 @@ UUID — unique task IDs
 🧱 Project Structure
 
 src/
+
 ├── components/
+
 │   ├── Header.tsx
+
 │   ├── TaskForm.tsx
+
 │   ├── TaskList.tsx
+
 │   └── TaskItem.tsx
+
 │
+
 ├── redux/
+
 │   ├── store.ts
+
 │   └── taskSlice.ts
+
 │
+
 ├── pages/
+
 │   ├── Home.tsx
+
 │   └── About.tsx
+
 │
+
 ├── App.tsx
+
 ├── main.tsx
+
 └── index.css
 
 ⚙️ Installation & Setup
@@ -96,8 +113,11 @@ Tasks are stored in firebase, so refreshing the page won't lose data.
 🧰 Future Improvements (TODO)
 
  Add dark mode 🌙
+ 
  Add subtasks support
+ 
  Add task due dates and reminders
+ 
  Add drag-and-drop for task ordering
 
 🌐 Live Demo
